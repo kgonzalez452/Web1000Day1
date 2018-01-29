@@ -42,6 +42,7 @@ if ( !(x < 10) || y <= 10 || z <= 25 || !dead ) //if ( !(x < 10) && !(y <= 10) &
 if (!(!alive || distance > 1000 || trapped || enemies < 0)) {
     alert("game goes on");
 }
+// (alive || !distance > 1000 || !trapped || !enemies < 0)
 
 //8) Can you distribute the negation across the expression in parens?
 if (!(dead && level < 99 && world == "Earth")) {
@@ -49,27 +50,27 @@ if (!(dead && level < 99 && world == "Earth")) {
 }
 
 //9) Generate a random number between 0 and 1 in Javascript
-math.random();
+Math.random();
 
 //10) Generate a random number between 0 and 10 in Javascript
-math.ceil(math.random()*10);
+Math.floor(Math.random()*10);
 
 //11) Generate a random integer between 0 and 10 (inclusive)
-math.floor(math.random()*11)-10;
+Math.floor(Math.random()*11)-10;
 
 //12) Generate a random number between 5 and 10
-math.ceil(math.random()*15)-10;
+Math.floor(Math.random()*15)-10;
 
 //12b) Generate a random integer between 5 and 10
-
+Math.round(Math.random()*5+5)
 
 //13) Generate a random integer between -10 and 30
-math.floor(math.random()*31)-10;
+Math.floor(Math.random()*31)-10;
 
 //14) Write a coin flip function. It should return the string "heads" half
 //the time and the string "butts" the other half
 function coinFlip(){
-math.random()*2;
+Math.random()*2;
 console.log('heads');
 console.log('butts');
 }
@@ -93,18 +94,26 @@ function pickCard(){
     else suit = "Spades";
 
     //your code here
-
-    return suit;
+    var num = Math.floor(Math.random()*13+1);
+    num += ' of ' + suit ;
+    return num;
 
 }
 
 //16) In programming, what is the opposite of black?
-
+    //!black
 //17) In programming, what is the opposite of x > y ?
-
+    // x <= y
 //18) Given an array of numbers, add up all the elements
 var a = [5,6,7,5433,543,53,535,53,543,543,23,412,34,45];
 
+function add(a) {
+    var sum = 0;
+    for (var i = 0; i < a.length; i++) {
+        sum += a[i];
+    }
+    return sum;
+}
 
 //19) Write a function has1337s which takes an array and
 //returns true if the array contains the number 1337
@@ -118,8 +127,16 @@ function has1337s(arr){
 /*20) Write a function that receives an array and another parameter.
 It will return true if one of the elements of the array is
 equal to the other param. It should return false otherwise */
-function containsThing(arr,theThing){
+var array = [1, 2, 3, 4];
+var thing = 3
 
+function containsThing(array, thing) {
+    for (var i = 0; i < array.length; i++) {
+        if (thing === array[i]) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /* 21) Write a function that receives an array and another parameter.
